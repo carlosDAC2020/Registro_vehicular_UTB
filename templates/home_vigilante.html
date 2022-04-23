@@ -1,0 +1,127 @@
+{% extends "base_home_vigilante.html" %}
+
+{% block page_content %}
+    <div class="container py-4">
+          <div class="row align-items-md-stretch ">
+            <div class="col-md-6">
+              <div class="h-100 p-5 text-blak bg-white rounded-3">
+                <h3 class="fw-boldmb-0">visitas registradas</h3>
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        VIisitas ahora
+                      </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body text-blak ">
+                        <table class="table">
+                          <thead class="thead-light ">
+                            <tr>
+                                <th scope="col">fecha</th>
+                                <th scope="col">visitante</th>
+                                <th scope="col">placa</th>
+                                <th scope="col">hora entrada</th>
+                                
+                            </tr>
+                          </thead>
+                          <tbody class="thead-light  table-info">
+                              {% for vist in visitas %}
+                              <tr>
+                                  <th>{{vist[4]}}</th>
+                                  <td>{{vist[1]}} {{vist[2]}}</td>
+                                  <td>{{vist[3]}}</td>
+                                  <td>{{vist[5]}}</td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Accordion Item #2
+                      </button>
+                    </h2>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        Accordion Item #3
+                      </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                      <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+                  <!-- mensajes de verificacion  -->      
+                {% with messages = get_flashed_messages()  %}
+                  {% if messages %}
+                    {% for message in messages %}
+                      {% if mensaje_error==1 %}
+                      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <a href="/home_vigilante"></a><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+                      </div>
+                      {% endif %}
+                      {% if mensaje_error==0 %}
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <a href="/home_vigilante"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+                      </div>
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                {% endwith %}
+                          <!-- Botones para subir y enviar el archivo.-->	
+              <form action = "/uploader" method="post" enctype="multipart/form-data">
+                <div class="modal modal-sheet position-static d-block  py-5" tabindex="-1" role="dialog" id="modalSheet">
+                  <div class="modal-dialog" role="document">
+                      <div class="modal-content rounded-6 shadow">
+              
+                        <div class="form-floating mb-3">
+                          <h2 class="fw-boldmb-0">Registro de visitas </h2> 
+                          </div>
+              
+                        <div class="modal-body py-0">
+                        <p>Are you sure?</p>
+                        </div>
+              
+                              <div class="modal-footer flex-column border-top-0">
+                      
+                                  <button type="button"  class="btn btn-lg btn-success  w-75  mx-0 mb-3" >
+                                      <input type="file"  id="file" accept="image/*" name ="archivo">
+                                      <label for="file"  style="width: 100%;">
+                                          <span class="material-icons">add_a_photo</span> &nbsp;
+                                          Choose a Photo
+                                      </label>
+                                  </button>
+                  
+                          
+                                  
+                                  <button type="submit" class="btn btn-lg btn-success  w-75  mx-0 mb-3" data-bs-dismiss="modal" >
+                                      <input type="submit" id ="submit" name="submit">
+                                      <label for="submit"  style ="width: 100%;">
+                                          Send
+                                      </label>
+                                  </button>
+
+                              </div>
+                            </div>
+                        </div>
+                      </div>  
+                  </form>
+              
+        </div>
+
+     
+{% endblock %}

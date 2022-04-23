@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+<div class="modal-dialog" role="document">
+    {% with messages = get_flashed_messages()  %}
+         {% if messages %}
+           {% for message in messages %}
+                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                   {{ message }}
+                   <a href="/index_vigilante"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></a>
+                 </div>
+           {% endfor %}
+         {% endif %}
+     {% endwith %}
+    <div class="modal-content rounded-5 shadow">
+      <div class="modal-header p-5 pb-4 border-bottom-0">
+        <!-- <h5 class="modal-title">Modal title</h5> -->
+        <h2 class="fw-boldmb-0">Inicio de sesion </h2>
+      </div>
+
+      <div class="modal-body p-5 pt-0">
+        <form class="" action="/loguin_vigilante" method="post">
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control rounded-4" id="floatingInput" name="email" placeholder="name@example.com">
+            <label for="floatingInput">Email</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control rounded-4" id="floatingPassword" name="password" placeholder="Password">
+            <label for="floatingPassword">Contraseña</label>
+          </div>
+          <button class="w-100 mb-2 btn btn-lg rounded-4 btn-success" type="submit">Sign up</button> 
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+{% endblock %}
+
+
+
+
