@@ -1,5 +1,23 @@
 {% extends "base.html" %}
 
+{% block nav_content %} 
+<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+      <a class="nav-link " href="/">Info</a>
+  </li>
+
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" href="/index_visitante">Visitantes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/index_vigilante">Seguridad</a>
+    </li>
+   
+</div>
+</div>
+{%endblock %}
+
 {% block page_content %}
   
 

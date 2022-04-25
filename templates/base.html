@@ -11,26 +11,20 @@
 </head>
 <body class="text-center">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Main navigation">
+      
         <div class="container">
+          <img src="../static/images/utb-logotipo.png" alt="65" height="65" class="position-absolute end-0">  
           <a class="navbar-brand" href="#">Registro vehicular UTB</a>
           <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
       
-          <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/">Visitantes</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/index_vigilante">Seguridad</a>
-              </li>
-             
-          </div>
-        </div>
+          {% block content %} 
+          {% block nav_content %} {% endblock %} 
+        
       </nav>
     
-    {% block content %}
+    
     <div class="container" id="contenido">
         <!-- contenido de la pagina -->
         {% block page_content %}{% endblock %}

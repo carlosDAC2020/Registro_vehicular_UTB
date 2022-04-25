@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block nav_content %} 
+<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="/">Info</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="/index_visitante">Visitantes</a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link" href="/index_vigilante">Seguridad</a>
+    </li>
+   
+</div>
+</div>
+{% endblock %}
+
+
+{% block page_content %}
+
+<div class="modal modal-sheet position-static d-block  py-5" tabindex="-1" role="dialog" id="modalSheet">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content rounded-6 shadow">
+        <div class="modal-header border-bottom-0">
+          <h5 class="modal-title">INFORMACION A TENER EN CUENTA</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body py-0">
+          <p>Esta no es la versión final del programa, todavia falta algunas cosas por pulir y solucionar (como lo es el despliegue). 
+              Mientras tanto, para que pueden ejecutar el código, el usurio debe descargar algunas y configurar otras para que funcione a la perfección
+          </p>
+        </div>
+        <div class="modal-footer flex-column border-top-0">
+          <a href="https://docs.google.com/document/d/17EzxDEOT6PzxSInx1Knoksdg4e_S7Wpm/edit?usp=sharing&ouid=106352609798087518287&rtpof=true&sd=true" target="_blank"><button type="button" class="btn btn-lg btn-success w-100 mx-0 mb-2">DOCUMENTO CON LOS PASOS</button></a>
+          <a href="/index_visitante"> <button type="button" class="btn btn-lg btn-success w-100 mx-0" data-bs-dismiss="modal">seguir a la pagina</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+
+
+
