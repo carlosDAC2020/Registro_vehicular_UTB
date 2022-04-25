@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config['uploadFolder'] = "./static/images"
 app.config['MYSQL_HOST'] = 'localhost' 
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'password'
+app.config['MYSQL_PASSWORD'] = 'J08042005'
 app.config['MYSQL_DB'] = 'registro_acceso_vehicular' #
 mysql = MySQL(app)
 
