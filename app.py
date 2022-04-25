@@ -102,7 +102,7 @@ def home_vigilante():
     cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM visitantes')
     visitantes = cur.fetchall()
-    cur.execute('SELECT * FROM visitas WHERE estado = 1')
+    cur.execute('SELECT * FROM visitas')
     visitas_rej = cur.fetchall()
     mysql.connection.commit()
     return render_template('home_vigilante.html', vigilante=vigilante_sesion, visitantes= visitantes, visitas=visitas_rej, mensaje_error=mensaje_error)
