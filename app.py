@@ -8,7 +8,7 @@ from logic.identificarPlaca import idPlaca
 
 app = Flask(__name__)
 
-app.config['uploadFolder'] = "./static/images"
+app.config['uploadFolder'] = "./static/image"
 app.config['MYSQL_HOST'] = 'localhost' 
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'J08042005'
