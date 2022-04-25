@@ -28,6 +28,7 @@
                           </thead>
                           <tbody class="thead-light  table-info">
                               {% for vist in visitas %}
+                              {% if vist[7]==1 %}
                                 <tr>
                                     <th>{{vist[4]}}</th>
                                     <td>{{vist[1]}} {{vist[2]}}</td>
@@ -45,6 +46,7 @@
                                       </form>
                                     </td>
                                 </tr>
+                                {% endif %}
                               {% endfor %}
                           </tbody>
                         </table>
