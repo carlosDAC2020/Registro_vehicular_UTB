@@ -6,6 +6,7 @@ from werkzeug.utils import secure_filename
 from flask_bootstrap import Bootstrap
 from logic.identificarPlaca import idPlaca
 
+
 app = Flask(__name__)
 
 app.config['uploadFolder'] = "./static/image"
@@ -101,7 +102,7 @@ def home_vigilante():
     cur = mysql.connection.cursor()
     cur.execute('SELECT * FROM visitantes')
     visitantes = cur.fetchall()
-    cur.execute('SELECT * FROM visitas')
+    cur.execute('SELECT * FROM visitas WHERE estado = 1')
     visitas_rej = cur.fetchall()
     mysql.connection.commit()
     return render_template('home_vigilante.html', vigilante=vigilante_sesion, visitantes= visitantes, visitas=visitas_rej, mensaje_error=mensaje_error)
@@ -152,16 +153,19 @@ def validar_visita():
     mensaje_error=1
     return redirect(url_for('home_vigilante'))
     
-@app.route("/registrar_salida")
+@app.route("/registrar_salida",methods=['POST'])
 def registro_salida():
+    placa = request.form['visita']
     global mensaje_error
+    
+
     # obtenemos fecha yn hora del registro de la visita 
     now = datetime.now()
     hora_salida=now.strftime("%H:%M:%S")
     
     # hacemos la actualizacion del estado de la visita de 1=activa a 0=inactiva
     cur = mysql.connection.cursor()
-    sentencia = " UPDATE visitas SET hora_salida = '{0}' , estado = 0".format( hora_salida)
+    sentencia = " UPDATE visitas SET hora_salida = '{0}' , estado = 0 WHERE placa_vehiculo LIKE ('{1}') ".format( hora_salida,placa)
     cur.execute (sentencia)
     
     flash('Salida registrada exitosamente')
